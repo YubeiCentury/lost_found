@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>一卡通拾取</title>
+    </head>
+
+    <body>
+        <div align="center">
+            <form action="post.php" method="post" enctype="multipart/form-data">
+                <div>
+                    <b>失主姓名：</b><input type="text" name="name_owner" ><br>
+                    <b>失主学号：</b><input type="text" name="stuno" ><br>
+                    <b>物品类型：</b><select name="describe"> 
+                                        <option value="一卡通">一卡通</option> 
+                                    </select><br>
+                    <b>物品图片：</b><input type="file" name="file"><br> 
+                    <b>拾者姓名：</b><input type="text" name="name_pickup" ><br>
+                    <b>联系方式：</b><select name="contactType"> 
+                                        <option value="QQ">QQ</option> 
+                                        <option value="微信">微信</option>
+                                        <option value="手机号">手机号</option>
+                                    </select><br>
+                    <b>         </b><input type="text" name="contact" ><br>
+                    <button><b>提交</b></button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
