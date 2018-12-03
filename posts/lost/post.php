@@ -1,17 +1,17 @@
 <?php
 
-	require_once("../../inc/dblocal.php");
-	require_once("../../inc/tool.php");
-	require("../../inc/upload.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/tool.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/dblocal.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/upload.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/token.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/header.php");
 	
     $id = $name_pickup = $fromStuno = $timestamp = $Type = $descripe = $image = $contactType = $contact="";
     $id = getRandChar(6);
 	$name_pickup = test_input($_POST['name_pickup']);
-	/*/
-    $token = $_GET['token'];
-	$fromStuno = getStuno($token);
-	/*/
-	$fromStuno   = NULL;
+    $header = getHttpHeader();
+    $token = $header['Authorization'];
+	$fromStuno   = getStuno($token);	//获取用户学号
 	$timestamp   = getTime();
 	$Type        = test_input($_POST['type']);
 	$descripe    = test_input($_POST['descripe']);
@@ -53,7 +53,7 @@
 			if(!$res){
 				echo makeErrJson(50002,"Internal Server Error");
 			}else{
-				echo makeErrJson(40003,"invalid parameter");
+				echo makeErrJson(0,"success");
 			}
 		}else{
 			echo makeErrJson(40003,"invalid parameter");
