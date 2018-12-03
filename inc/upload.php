@@ -3,7 +3,7 @@
     require_once($_SERVER['DOCUMENT_ROOT']."/inc/tool.php");
     require 'QiniuPHPsdk/autoload.php';
 
-        //默认域名：phi28j82d.bkt.clouddn.com
+        //默认域名：qiniu.yubei.online
         // 引入鉴权类
         use Qiniu\Auth;
         // 引入上传类
@@ -33,7 +33,7 @@
             $url = array(
                     "error" => "0",
                     "msg" => "success",
-                    "url" => "http://phi28j82d.bkt.clouddn.com/".$key
+                    "url" => "http://qiniu.yubei.online/".$key
                 );
             return json_encode($url);
         }else{

@@ -1,3 +1,4 @@
 inc/asKey.php
 inc/dbhduhelp.php
 inc/tool2.php
+inc/token.php
