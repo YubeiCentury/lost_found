@@ -1,7 +1,7 @@
 <?php
 
-    require_once("../../inc/tool.php");
-    require_once("../../inc/dblocal.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/inc/tool.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/inc/dblocal.php");
     //require_once("dbhduhelp.php");
 	$id = $_GET['id'];
 	$find_id = "select * from lost_found where id = :id ";
@@ -21,7 +21,7 @@
             $contact = $row['contact'];
             $timestamp = $row['timestamp'];
             $data = array(
-                "error" => 200,
+                "error" => 0,
                 "msg" => "success",
                 "data" => array(
                     "name_pickup" => $name_pickup,
