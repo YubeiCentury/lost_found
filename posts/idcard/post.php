@@ -3,7 +3,9 @@
 	require_once($_SERVER['DOCUMENT_ROOT']."/inc/tool.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/inc/dblocal.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/inc/upload.php");
-
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/token.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/inc/header.php");
+	
 	$id = $name_owner = $stuno = $describe =$name_pickup = $contact = $image = $url =$contactType = $fromStuno = $timestamp = $err = "" ;
 	$id          = getRandChar(6);	//获取id
 	$name_owner  = test_input($_POST['name_owner']);		//失主姓名
@@ -14,17 +16,11 @@
 	$contact     = test_input($_POST['contact']);	//具体QQ号、微信号、电话
 	$fileName 	 = $_FILES["file"]["name"];
 	$filePath	 = "../../image/".$fileName;
-	var_dump($_FILES["file"]["tmp_name"]);
 	move_uploaded_file($_FILES["file"]["tmp_name"],$filePath);
-	/*/
-	$data = upload($fileName);
-	$dataarr = json_decode($data,true);
-	/*/
 	$timestamp   = getTime();	//获取当前时间
-	$token       = NULL;
-	$fromStuno   = NULL;
-	//$token       = $_GET['token'];	//获取用户token
-	//$fromStuno   = getStuno($token);	//获取用户学号
+    $header = getHttpHeader();
+    $token = $header['Authorization'];
+	$fromStuno   = getStuno($token);	//获取用户学号
 	//判断图片大小是否符合要求
 	$file_size = $_FILES['file']['size'];  
     if($file_size>5*1024*1024) {  
@@ -57,7 +53,7 @@
 		$query->bindValue(':timestamp',$timestamp,PDO::PARAM_STR);
 		$res = $query->execute();
 		if(!$res){
-			echo makeErrJson(50002,"Internal Server Error");
+			echo makeErrJson(50001,"Internal Server Error");
 		}else{
 			echo makeErrJson(0,"success");
 		}
