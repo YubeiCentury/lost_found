@@ -8,8 +8,16 @@
     $token = $header['Authorization'];
     if(isValidToken($token)){
         switch($method){
-            case 'POST':{
-                require_once('post.php');
+            case 'DELETE':{
+                require_once('delete.php');
+                break;
+            }
+            case 'GET':{
+                require_once('getid.php');
+                break;
+            }
+            case 'UPDATE':{
+                require_once('update.php');
                 break;
             }
             default: echo makeErrJson(40501,"未找到相应请求方式");
