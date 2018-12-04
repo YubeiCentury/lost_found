@@ -4,7 +4,7 @@
     $method = $_SERVER['REQUEST_METHOD'];
     switch($method){
         case 'GET':{
-            require_once('login.php');
+            require_once('get.php');
             break;
         }
         default: echo makeErrJson(40501,"未找到相应请求方式");
