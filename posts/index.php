@@ -8,15 +8,11 @@
     $token = $header['Authorization'];
     if(isValidToken($token)){
         switch($method){
-            case 'DELETE':{
-                require_once('delete.php');
-                break;
-            }
             case 'GET':{
                 require_once('getid.php');
                 break;
             }
-            case 'UPDATE':{
+            case 'POST':{
                 require_once('update.php');
                 break;
             }
