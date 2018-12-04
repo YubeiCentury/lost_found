@@ -8,6 +8,36 @@ BaseURL : www.buhuiphp.com
 
 ## 接口详情
 
+
+## `/user` 登录相关
+
+### GET `/user/login/`  获取学号登录链接
+
+Quieries:
+
+- `redirect` app回调地址，用于接受AccessToken的地址，需要http/https前缀
+- `clientId` 设备id
+
+Response(OK):
+
+`url`就是登录链接
+
+注意:**返回url中的所有`&`被替换成了`\u0026`，需要前端进行一次字符串替换，不然学校接口会报错**
+
+```json
+{
+    "error":0,
+    "msg":"get url success",
+    "url":"url"
+}
+```
+用户登录完成之后会跳转到`{redirect}?auth={token}`地址，如：
+
+如`redirect`为`https%3a%2f%2fwww.baidu.com`时，登录成功后跳转`https://www.baidu.com/?auth=LrIH9YEaUy9pmg6nLlpatVvPaxtNuRgQPDT`,其中`LrIH9YEaUy9pmg6nLlpatVvPaxtNuRgQPDT`就是用户token，有效期6个月
+
+之后的请求携带该token即可
+
+
 ## `/posts` 信息流相关
 
 ### POST `/posts/idcard/`  提交一卡通拾取表单
@@ -146,10 +176,44 @@ Response(OK):
         {"id":"PBLtJh"}
     ]
 ```
+### POST `/posts/`  修改物品描述
 
-### POST `/posts/qq/`  获取跳转QQurl
+Quieries:
+
+- `id` 表单唯一编号
+- `describe` 新物品描述
 
 Response(OK):
+
+```json
+    {
+     "error":0,
+     "msg":"success"
+    }
+```
+### GET `/posts/delete.php` 删除表单
+
+Quieries:
+
+- `type` 表单类型：①`lost` ②`idcard`(一卡通拾取)
+- `id` 表单唯一编号
+
+eg：`http://www.buhuiphp.com/posts/delete.php?id=z09n8p&type=lost`
+
+Response(OK):
+
+```json
+    {
+     "error":0,
+     "msg":"success"
+    }
+```
+
+### POST `/posts/qq/`  获取跳转QQ链接
+
+Response(OK):
+
+`url`就是跳转链接
 
 ```json
     {
