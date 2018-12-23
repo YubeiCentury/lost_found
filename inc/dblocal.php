@@ -12,7 +12,7 @@
 	    $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
     } catch (PDOException $e) {
         $json = array(
-            $error => 500,
+            $error => 50001,
             $msg => "Internal Server Error"
         );
         echo json_encode($json);

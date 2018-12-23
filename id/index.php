@@ -9,11 +9,7 @@
     if(isValidToken($token)){
         switch($method){
             case 'GET':{
-                require_once('getid.php');
-                break;
-            }
-            case 'POST':{
-                require_once('update.php');
+                require_once('get.php');
                 break;
             }
             default: echo makeErrJson(40501,"未找到相应请求方式");

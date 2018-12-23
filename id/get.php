@@ -21,5 +21,5 @@
             "id" => $row['id']
         );
     }
-        echo json_encode($arr);
+    echo json_encode($arr);
 ?>
