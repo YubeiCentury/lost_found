@@ -37,8 +37,30 @@ Response(OK):
 
 之后的请求携带该token即可
 
+## `/id` 获取id相关
 
-## `/posts` 信息流相关
+### GET `/id/`  获取id列表
+
+Quieries:
+
+- `type` 表单类型：①`lost` ②`idcard`(一卡通拾取)
+
+eg：`http://www.buhuiphp.com/id/?type=lost`
+
+Response(OK):
+
+```json
+    [
+        {"id":"VDek4u"},
+        {"id":"6ZirNF"},
+        {"id":"fir1Gc"},
+        {"id":"Kywi2O"},
+        {"id":"z09n8p"},
+        {"id":"PBLtJh"}
+    ]
+```
+
+## `/idcard` 一卡通相关
 
 ### POST `/idcard/`  提交一卡通拾取表单
 
@@ -87,6 +109,8 @@ Response(OK):
     }
 ```
 
+## `/lost` 其他遗失物相关
+
 ### POST `/lost/`  提交遗失物拾取表单
 
 Quieries:
@@ -130,26 +154,6 @@ Response(OK):
     }
 ```
 
-### GET `/id/`  获取id列表
-
-Quieries:
-
-- `type` 表单类型：①`lost` ②`idcard`(一卡通拾取)
-
-eg：`http://www.buhuiphp.com/id/?type=lost`
-
-Response(OK):
-
-```json
-    [
-        {"id":"VDek4u"},
-        {"id":"6ZirNF"},
-        {"id":"fir1Gc"},
-        {"id":"Kywi2O"},
-        {"id":"z09n8p"},
-        {"id":"PBLtJh"}
-    ]
-```
 ### POST `/lost/update.php`  修改某拾取物物品描述
 
 Quieries:
@@ -182,6 +186,8 @@ Response(OK):
     }
 ```
 
+## `/qq` 跳转QQ相关
+
 ### POST `/qq/`  获取跳转QQ链接
 
 Response(OK):
@@ -193,6 +199,9 @@ Response(OK):
         "url":"www.buhuiphp.com\/inc\/openqq.php"
     }
 ```
+
+## `/rank` 排序相关
+
 ### GET `/rank/`  获取排名降序
 
 Response(OK):
