@@ -15,7 +15,7 @@
 	$contactType = $_POST['contactType'];	//联系方式
 	$contact     = test_input($_POST['contact']);	//具体QQ号、微信号、电话
 	$fileName 	 = $_FILES["file"]["name"];
-	$filePath	 = "../../image/".$fileName;
+	$filePath	 = "../image/".$fileName;
 	move_uploaded_file($_FILES["file"]["tmp_name"],$filePath);
 	$timestamp   = getTime();	//获取当前时间
     $header = getHttpHeader();

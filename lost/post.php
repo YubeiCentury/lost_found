@@ -18,7 +18,7 @@
     $contactType = $_POST['contactType'];
     $contact = test_input($_POST['contact']);
 	$fileName 	 = $_FILES["file"]["name"];
-	$filePath	 = "../../image/".$fileName;
+	$filePath	 = "../image/".$fileName;
 	move_uploaded_file($_FILES["file"]["tmp_name"],$filePath);
 		//判断图片大小是否符合要求
 		$file_size = $_FILES['file']['size'];  
