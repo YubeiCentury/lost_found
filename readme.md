@@ -2,7 +2,7 @@
 
 ## 接口使用
 
-BaseURL : www.buhuiphp.com
+BaseURL : localhost
 
 使用请求头`Authorization`携带token`token {your token here}`访问接口
 
@@ -182,7 +182,7 @@ Response(OK):
     }
 ```
 
-### POST /qq/`  获取跳转QQ链接
+### POST `/qq/`  获取跳转QQ链接
 
 Response(OK):
 
@@ -193,7 +193,7 @@ Response(OK):
         "url":"www.buhuiphp.com\/inc\/openqq.php"
     }
 ```
-### GET `/rank/`  获取排名
+### GET `/rank/`  获取排名降序
 
 Response(OK):
 
